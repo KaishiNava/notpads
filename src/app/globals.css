@@ -19,3 +19,72 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
 @media print{
  @page{margin:0;size:A4} body{background:white!important}.no-print{display:none!important}.print-root{display:block!important}.print-sheet{box-shadow:none!important;border:0!important;margin:0!important;width:100%!important;min-height:0!important;padding:12mm!important}.print-sheet[data-size="A5"]{width:148mm!important;min-height:210mm!important}.print-sheet[data-size="80mm"]{width:80mm!important;padding:4mm!important}.print-sheet[data-size="58mm"]{width:58mm!important;padding:3mm!important}.print-sheet[data-size="80mm"],.print-sheet[data-size="58mm"]{font-size:10px}.print-sheet[data-size="80mm"] table,.print-sheet[data-size="58mm"] table{min-width:0!important;font-size:9px}.print-sheet[data-size="80mm"] th,.print-sheet[data-size="58mm"] th{padding:5px 3px}.print-sheet[data-size="80mm"] td,.print-sheet[data-size="58mm"] td{padding:5px 3px}.print-sheet .invoice-table{border:1px solid #111}.print-sheet .invoice-table th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+/* NotPad 2.0 — responsive workshop workspace */
+.top-actions{display:flex;align-items:center;gap:10px}.settings-link{background:#fff}
+.highlight{background:var(--yellow);padding:0 8px}.intro{max-width:620px;line-height:1.7}
+.settings-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;margin-top:30px;align-items:start}
+.settings-nav{padding:18px;display:grid;gap:10px;position:sticky;top:96px}
+.settings-nav b{display:flex;align-items:center;gap:8px;margin-bottom:5px}.settings-nav a{color:#333;text-decoration:none;padding:9px 10px;border-left:3px solid var(--yellow);background:#f7f5ef;font-size:13px;font-weight:700}
+.settings-content{display:grid;gap:18px;min-width:0}.settings-card{padding:24px;scroll-margin-top:100px}
+.section-kicker{display:flex;gap:13px;align-items:flex-start;margin-bottom:22px}.section-kicker>span{background:var(--yellow);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);padding:7px 9px;font:500 12px 'DM Mono',monospace}
+.section-kicker h2{font-size:21px;margin:0 0 4px;letter-spacing:-.6px}.section-kicker p,.small{font-size:12px;color:#777;margin:0;line-height:1.6}
+.logo-editor{display:flex;gap:18px;align-items:center;padding:15px;background:#f6f4ed;border:1px dashed #999;margin-bottom:20px}
+.logo-preview{width:112px;height:82px;background:#fff;border:1px solid #ddd;display:grid;place-items:center;padding:8px;flex-shrink:0}.logo-preview img{max-width:100%;max-height:100%;object-fit:contain}
+.upload-btn{margin-top:10px}.text-button{border:0;background:none;text-decoration:underline;font-size:12px;margin-left:12px}
+.toggle-list{margin-top:18px;border-top:1px solid #ddd}.toggle-list label{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid #ddd;align-items:center}.toggle-list b,.toggle-list small{display:block}.toggle-list small{font-size:12px;color:#777;margin-top:3px}.toggle-list input{width:20px;height:20px;accent-color:#171717}
+.number-example{margin-top:14px;background:#f5f2e8;padding:13px;font:11px 'DM Mono',monospace;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.backup-actions{display:flex;gap:12px;flex-wrap:wrap}.notice{background:#e4f6e9;border:2px solid #25683c;padding:13px;font-weight:700}.save-bar{display:flex;justify-content:flex-end;gap:12px;padding:12px 0 25px}
+.invoice-form-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.8fr);gap:20px}
+.calculation-aside{position:sticky;top:95px;min-width:0}.save-invoice-btn{width:100%;min-height:50px}
+.new-page{max-width:1180px}.new-page .card{min-width:0}.new-page .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.invoice-paper{width:100%;max-width:850px;margin:0 auto;padding:34px;background:#fff;color:#111;box-shadow:7px 7px 0 #171717;overflow:hidden}
+.receipt-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:20px;border-bottom:2px solid #171717}
+.receipt-brand{display:flex;align-items:center;gap:14px;min-width:0}.receipt-logo{width:92px;height:66px;object-fit:contain;flex-shrink:0}
+.receipt-workshop{font-size:26px;font-weight:900;letter-spacing:-1px;line-height:1.1}.receipt-contact{font-size:11px;color:#555;margin-top:5px;white-space:pre-wrap}
+.receipt-meta{display:grid;text-align:right;gap:5px;font-size:12px;flex-shrink:0}.receipt-meta strong{font-size:19px;letter-spacing:-.5px}
+.receipt-parties{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:19px 0}.receipt-parties section{display:grid;gap:5px;font-size:12px;overflow-wrap:anywhere}.receipt-label{font:700 10px 'DM Mono',monospace;letter-spacing:1px;color:#666;margin-bottom:2px}
+.receipt-table-wrap{width:100%;overflow:visible}.invoice-table{width:100%;min-width:0;border-collapse:collapse;font-size:11px;table-layout:auto}.invoice-table th{background:#f1f1f1!important;padding:11px 8px;text-align:left;border-top:1px solid #111;border-bottom:2px solid #111;font-size:10px}.invoice-table td{padding:10px 8px;border-bottom:1px solid #ddd;vertical-align:top;overflow-wrap:anywhere}.align-right{text-align:right!important;white-space:nowrap}
+.receipt-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px, .9fr);gap:25px;margin-top:20px}.receipt-note{font-size:11px;white-space:pre-wrap}.receipt-note p{margin:5px 0}
+.receipt-totals{font-size:12px}.receipt-totals>div{display:flex;justify-content:space-between;gap:15px;padding:6px 0}.receipt-totals .grand-total{font-size:18px;border-top:2px solid #111;border-bottom:1px solid #111;margin:5px 0;padding:10px 0}.receipt-totals small{display:block;margin-top:8px;font-size:10px;color:#555}
+.receipt-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin-top:42px;font-size:11px;white-space:pre-line}.receipt-footer p{max-width:55%;line-height:1.6}.receipt-footer>div{display:grid;text-align:center;min-width:145px}.receipt-footer i{height:46px}.receipt-footer b{border-top:1px solid #222;padding-top:5px}.receipt-bottomline{text-align:center;border-top:1px dashed #aaa;margin-top:25px;padding-top:9px;font:9px 'DM Mono',monospace;color:#777}
+@media(max-width:760px){
+ .page{padding:24px 14px 56px}.topbar{height:66px;padding:0 12px}.brand{font-size:22px;gap:9px}.brand-mark{width:35px;height:35px}.top-actions{gap:7px}.btn{padding:11px 13px}.btn-small{padding:8px 10px}
+ .settings-layout{grid-template-columns:1fr;gap:14px}.settings-nav{position:static;display:flex;overflow-x:auto;white-space:nowrap;gap:7px;padding:10px}.settings-nav b{display:none}.settings-nav a{flex-shrink:0}
+ .settings-card{padding:17px}.settings-page h1{font-size:44px}.logo-editor{align-items:flex-start}.logo-preview{width:88px;height:72px}
+ .invoice-form-layout{grid-template-columns:minmax(0,1fr);gap:16px}.calculation-aside{position:static;grid-row:1}
+ .new-page .grid-2{grid-template-columns:minmax(0,1fr)}.new-page .section-title{font-size:17px}.new-page .card{padding:16px!important}
+ .table-wrap{max-width:100%;overflow-x:auto}.table-wrap table{min-width:590px}
+ .invoice-paper{padding:22px 16px;box-shadow:4px 4px 0 #171717}.receipt-logo{width:65px;height:52px}.receipt-workshop{font-size:19px}.receipt-meta strong{font-size:15px}.receipt-meta{font-size:10px}.receipt-head{gap:9px;padding-bottom:14px}
+ .receipt-parties{gap:12px;padding:14px 0}.receipt-parties section{font-size:10px}.invoice-table{font-size:9px}.invoice-table th{font-size:8px;padding:7px 4px}.invoice-table td{padding:7px 4px}.receipt-bottom{grid-template-columns:1fr;gap:12px}.receipt-totals{max-width:100%}.receipt-footer{margin-top:28px;font-size:9px}.receipt-footer>div{min-width:110px}
+}
+@media(max-width:390px){.receipt-logo{width:48px;height:42px}.receipt-workshop{font-size:16px}.receipt-meta strong{font-size:13px}.invoice-paper{padding:16px 10px}.receipt-parties{grid-template-columns:1fr 1fr}.invoice-table th,.invoice-table td{padding:6px 2px;font-size:8px}}
+@media print{
+ @page{margin:0;size:A4}
+ html,body{background:#fff!important;margin:0!important;padding:0!important}
+ body *{visibility:hidden!important}
+ .print-root,.print-root *{visibility:visible!important}
+ .print-root{position:absolute;left:0;top:0;width:100%}
+ .print-sheet{display:block!important;box-shadow:none!important;border:0!important;border-radius:0!important;margin:0!important;max-width:none!important;width:100%!important;padding:12mm!important;overflow:visible!important;break-inside:avoid}
+ .print-sheet[data-size="A5"]{width:148mm!important;min-height:210mm!important;padding:9mm!important}
+ .print-sheet[data-size="80mm"]{width:80mm!important;padding:4mm!important;font-size:9px!important}
+ .print-sheet[data-size="58mm"]{width:58mm!important;padding:3mm!important;font-size:8px!important}
+ .print-sheet[data-size="80mm"] .receipt-head,.print-sheet[data-size="58mm"] .receipt-head{display:block;text-align:center;padding-bottom:9px}
+ .print-sheet[data-size="80mm"] .receipt-brand,.print-sheet[data-size="58mm"] .receipt-brand{display:grid;justify-items:center;gap:5px}
+ .print-sheet[data-size="80mm"] .receipt-logo,.print-sheet[data-size="58mm"] .receipt-logo{width:44px;height:34px}
+ .print-sheet[data-size="80mm"] .receipt-workshop,.print-sheet[data-size="58mm"] .receipt-workshop{font-size:13px}
+ .print-sheet[data-size="80mm"] .receipt-meta,.print-sheet[data-size="58mm"] .receipt-meta{text-align:center;margin-top:8px}
+ .print-sheet[data-size="80mm"] .receipt-meta strong,.print-sheet[data-size="58mm"] .receipt-meta strong{font-size:13px}
+ .print-sheet[data-size="80mm"] .receipt-parties,.print-sheet[data-size="58mm"] .receipt-parties{gap:6px;padding:9px 0}
+ .print-sheet[data-size="80mm"] .receipt-parties section,.print-sheet[data-size="58mm"] .receipt-parties section{font-size:8px}
+ .print-sheet[data-size="80mm"] .invoice-table,.print-sheet[data-size="58mm"] .invoice-table{font-size:7px;table-layout:fixed}
+ .print-sheet[data-size="80mm"] .invoice-table th,.print-sheet[data-size="58mm"] .invoice-table th{font-size:7px;padding:4px 2px}
+ .print-sheet[data-size="80mm"] .invoice-table td,.print-sheet[data-size="58mm"] .invoice-table td{padding:4px 2px;white-space:normal;overflow-wrap:anywhere}
+ .print-sheet[data-size="80mm"] .receipt-bottom,.print-sheet[data-size="58mm"] .receipt-bottom{display:block;margin-top:9px}
+ .print-sheet[data-size="80mm"] .receipt-totals,.print-sheet[data-size="58mm"] .receipt-totals{font-size:8px}
+ .print-sheet[data-size="80mm"] .receipt-totals .grand-total,.print-sheet[data-size="58mm"] .receipt-totals .grand-total{font-size:11px}
+ .print-sheet[data-size="80mm"] .receipt-footer,.print-sheet[data-size="58mm"] .receipt-footer{display:block;text-align:center;margin-top:16px;font-size:8px}
+ .print-sheet[data-size="80mm"] .receipt-footer p,.print-sheet[data-size="58mm"] .receipt-footer p{max-width:none}
+ .print-sheet[data-size="80mm"] .receipt-footer>div,.print-sheet[data-size="58mm"] .receipt-footer>div{margin:10px auto 0}
+ .print-sheet[data-size="80mm"] .receipt-footer i,.print-sheet[data-size="58mm"] .receipt-footer i{height:25px}
+}

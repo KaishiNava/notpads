@@ -2,20 +2,21 @@
 import {Invoice,money,totalOf} from "@/lib/types";
 export default function InvoicePaper({invoice}:{invoice:Invoice}){
  const subtotal=totalOf(invoice.items||[]),total=Math.max(0,subtotal-(Number(invoice.discount)||0)),change=Math.max(0,(Number(invoice.paid)||0)-total);
- return <article className="print-sheet card" data-size={invoice.paper_size} style={{padding:32,background:"white",color:"#111",maxWidth:invoice.paper_size==="80mm"?420:invoice.paper_size==="58mm"?310:850,margin:"0 auto"}}>
- <div style={{display:"flex",justifyContent:"space-between",gap:18,borderBottom:"2px solid #111",paddingBottom:18,marginBottom:18}}>
-  <div><div style={{fontSize:25,fontWeight:900,letterSpacing:-1}}>{invoice.workshop_name||"BENGKEL HONDA"}</div><div style={{fontSize:12,marginTop:5}}>{invoice.workshop_address||"Alamat bengkel"}</div><div style={{fontSize:12}}>{invoice.workshop_phone}</div></div>
-  <div style={{textAlign:"right",minWidth:100}}><div style={{fontSize:20,fontWeight:900}}>NOTA</div><div style={{fontSize:12,marginTop:5}}>{invoice.invoice_number}</div><div style={{fontSize:12}}>{invoice.invoice_date}</div></div>
- </div>
- <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,fontSize:12,marginBottom:18}}>
-  <div><b>DITERIMA DARI</b><div>{invoice.buyer_name||"-"}</div><div>{invoice.buyer_phone}</div><div>{invoice.buyer_address}</div></div>
-  <div><b>INFORMASI KENDARAAN</b><div>{invoice.vehicle||"-"}</div><div>No. Polisi: {invoice.plate_number||"-"}</div></div>
- </div>
- <table className="invoice-table" style={{minWidth:0,border:"1px solid #111",fontSize:12}}><thead><tr><th style={{background:"#eee"}}>No</th><th style={{background:"#eee"}}>Keterangan Barang / Jasa</th><th style={{background:"#eee",textAlign:"right"}}>Qty</th><th style={{background:"#eee",textAlign:"right"}}>Harga</th><th style={{background:"#eee",textAlign:"right"}}>Jumlah</th></tr></thead><tbody>
- {invoice.items.map((item,i)=><tr key={item.id}><td>{i+1}</td><td>{item.name||"-"}</td><td style={{textAlign:"right"}}>{item.qty}</td><td style={{textAlign:"right"}}>{money(item.price)}</td><td style={{textAlign:"right"}}>{money(item.qty*item.price)}</td></tr>)}
- </tbody></table>
- <div style={{display:"flex",justifyContent:"flex-end",marginTop:16}}><div style={{width:260,fontSize:13}}><div style={{display:"flex",justifyContent:"space-between",padding:"5px 0"}}><span>Subtotal</span><b>{money(subtotal)}</b></div><div style={{display:"flex",justifyContent:"space-between",padding:"5px 0"}}><span>Diskon</span><b>{money(invoice.discount)}</b></div><div style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderTop:"2px solid #111",fontSize:17}}><b>TOTAL</b><b>{money(total)}</b></div><div style={{display:"flex",justifyContent:"space-between",padding:"4px 0"}}><span>Dibayar</span><b>{money(invoice.paid)}</b></div><div style={{display:"flex",justifyContent:"space-between",padding:"4px 0"}}><span>Kembalian</span><b>{money(change)}</b></div><div style={{paddingTop:5}}>Metode: {invoice.payment_method}</div></div></div>
- {invoice.note&&<div style={{fontSize:12,marginTop:18}}><b>Catatan:</b> {invoice.note}</div>}
- <div style={{display:"flex",justifyContent:"space-between",marginTop:40,fontSize:12,textAlign:"center"}}><div>Terima kasih atas kepercayaan Anda.</div><div style={{width:140}}>Hormat kami,<br/><br/><br/>(________________)</div></div>
+ const thermal=invoice.paper_size==="80mm"||invoice.paper_size==="58mm";
+ return <article className="print-sheet invoice-paper card" data-size={invoice.paper_size}>
+  <header className="receipt-head">
+   <div className="receipt-brand">{invoice.workshop_logo&&<img className="receipt-logo" src={invoice.workshop_logo} alt="Logo bengkel"/>}<div><div className="receipt-workshop">{invoice.workshop_name||"BENGKEL HONDA"}</div><div className="receipt-contact">{invoice.workshop_address||""}</div>{invoice.workshop_phone&&<div className="receipt-contact">{invoice.workshop_phone}</div>}</div></div>
+   <div className="receipt-meta"><strong>NOTA PEMBAYARAN</strong><span>{invoice.invoice_number}</span><span>{invoice.invoice_date}</span></div>
+  </header>
+  <div className="receipt-parties">
+   <section><div className="receipt-label">DITERIMA DARI</div><b>{invoice.buyer_name||"-"}</b>{invoice.buyer_phone&&<span>{invoice.buyer_phone}</span>}{invoice.show_buyer_address!==false&&invoice.buyer_address&&<span>{invoice.buyer_address}</span>}</section>
+   {invoice.show_vehicle!==false&&<section><div className="receipt-label">INFORMASI KENDARAAN</div><b>{invoice.vehicle||"-"}</b><span>No. Polisi: {invoice.plate_number||"-"}</span></section>}
+  </div>
+  <div className="receipt-table-wrap"><table className="invoice-table"><thead><tr><th>No</th><th>Keterangan Barang / Jasa</th><th className="align-right">Qty</th><th className="align-right">Harga</th><th className="align-right">Jumlah</th></tr></thead><tbody>
+   {(invoice.items||[]).map((item,i)=><tr key={item.id}><td>{i+1}</td><td>{item.name||"-"}</td><td className="align-right">{item.qty}</td><td className="align-right">{money(item.price)}</td><td className="align-right">{money(item.qty*item.price)}</td></tr>)}
+  </tbody></table></div>
+  <div className="receipt-bottom"><div className="receipt-note">{invoice.note&&<><b>Catatan</b><p>{invoice.note}</p></>}</div><div className="receipt-totals"><div><span>Subtotal</span><b>{money(subtotal)}</b></div><div><span>Diskon</span><b>{money(invoice.discount)}</b></div><div className="grand-total"><strong>TOTAL</strong><strong>{money(total)}</strong></div><div><span>Dibayar</span><b>{money(invoice.paid)}</b></div><div><span>Kembalian</span><b>{money(change)}</b></div><small>Metode pembayaran: {invoice.payment_method||"Tunai"}</small></div></div>
+  <footer className="receipt-footer"><p>{invoice.workshop_footer||"Terima kasih atas kepercayaan Anda."}</p><div><span>{invoice.signature_label||"Hormat kami,"}</span><i> </i><b>{invoice.workshop_name||"BENGKEL HONDA"}</b></div></footer>
+  {!thermal&&<div className="receipt-bottomline">NOTPAD • BUKTI PEMBAYARAN RESMI</div>}
  </article>
 }

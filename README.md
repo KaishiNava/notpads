@@ -25,3 +25,14 @@ Nota disimpan di localStorage browser/perangkat. Data tetap ada setelah halaman 
 - Vercel hanya meng-host aplikasi; data nota tidak disimpan di server Vercel.
 
 Untuk pemakaian awal satu HP, ini sesuai. Sebaiknya ekspor/cadangkan data secara berkala sebelum membersihkan data browser.
+
+
+## NotPad 2.0 — pembaruan
+- Halaman Pengaturan untuk identitas bengkel, logo, ukuran kertas default, footer, penomoran, dan preferensi nota.
+- Logo Honda transparan bawaan tersedia di `public/honda-logo.png`; logo dapat diganti dari Pengaturan.
+- Ekspor/impor cadangan JSON untuk nota dan pengaturan lokal.
+- Formulir dan halaman pengaturan lebih nyaman di layar HP.
+- Desain nota diperbarui untuk A4, A5, thermal 80 mm, dan 58 mm.
+- Tetap menggunakan localStorage browser, tanpa Supabase.
+
+Catatan: localStorage terikat pada browser/perangkat. Gunakan Ekspor Cadangan secara berkala. Saat memulihkan cadangan, daftar nota lokal saat ini akan diganti oleh data di file cadangan.
