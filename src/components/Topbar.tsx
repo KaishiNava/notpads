@@ -1,0 +1,2 @@
+import Link from "next/link";import {Wrench,ArrowLeft} from "lucide-react";
+export default function Topbar({back=false}:{back?:boolean}){return <header className="topbar no-print"><Link href="/" className="brand" style={{textDecoration:"none",color:"inherit"}}><span className="brand-mark"><Wrench size={22}/></span>NotPad<span className="badge hide-mobile">WORKSHOP TOOLS</span></Link><div className="eyebrow hide-mobile">INVOICE MANAGEMENT / 01</div>{back&&<Link href="/" className="btn btn-small"><ArrowLeft size={15}/> Dashboard</Link>}</header>}
