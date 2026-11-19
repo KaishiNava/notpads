@@ -56,158 +56,66 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
 }
 @media(max-width:390px){.receipt-logo{width:48px;height:42px}.receipt-workshop{font-size:16px}.receipt-meta strong{font-size:13px}.invoice-paper{padding:16px 10px}.receipt-parties{grid-template-columns:1fr 1fr}.invoice-table th,.invoice-table td{padding:6px 2px;font-size:8px}}
 
-/* NotPad 2.0.3 — isolated print layout */
-@page A4Page { size: 210mm 297mm; margin: 0; }
-@page A5Page { size: 148mm 210mm; margin: 0; }
-@page Receipt80Page { size: 80mm 250mm; margin: 0; }
-@page Receipt58Page { size: 58mm 250mm; margin: 0; }
+/* NotPad 2.1 — paper-specific print layout */
+@page A4Page { size: A4 portrait; margin: 0; }
+@page A5Page { size: A5 portrait; margin: 0; }
+@page Receipt80Page { size: 80mm 180mm; margin: 0; }
+@page Receipt58Page { size: 58mm 180mm; margin: 0; }
+
+.payment-stamp{display:inline-block;justify-self:end;border:1.5px solid currentColor;border-radius:3px;padding:4px 8px;font:900 10px 'DM Mono',monospace;letter-spacing:.8px}
+.payment-stamp.is-paid{color:#14783b;background:#e8f7ed}
+.payment-stamp.is-unpaid{color:#b42318;background:#fff0ed}
 
 @media print {
   @page { margin: 0; }
-  html, body {
-    background: #fff !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: auto !important;
-    min-height: 0 !important;
-    height: auto !important;
-  }
-
-  /* Remove the app chrome and its layout space. visibility:hidden alone
-     keeps the hidden header and controls in document flow, creating blank pages. */
-  .shell { display: contents !important; min-height: 0 !important; background: #fff !important; }
-  .topbar { display: none !important; }
-  .page {
-    display: contents !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .page > :not(.print-root) { display: none !important; }
-  .no-print { display: none !important; }
-
-  .print-root {
-    display: block !important;
-    position: static !important;
-    width: auto !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-  }
-  .print-sheet {
-    display: block !important;
-    box-sizing: border-box !important;
-    background: #fff !important;
-    color: #111 !important;
-    box-shadow: none !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-    overflow: visible !important;
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .print-sheet[data-size="A4"] {
-    page: A4Page;
-    width: 210mm !important;
-    min-height: 297mm !important;
-    padding: 12mm !important;
-  }
-  .print-sheet[data-size="A5"] {
-    page: A5Page;
-    width: 148mm !important;
-    min-height: 210mm !important;
-    padding: 9mm !important;
-  }
-  .print-sheet[data-size="80mm"] {
-    page: Receipt80Page;
-    width: 80mm !important;
-    padding: 4mm !important;
-    font-size: 9px !important;
-  }
-  .print-sheet[data-size="58mm"] {
-    page: Receipt58Page;
-    width: 58mm !important;
-    padding: 3mm !important;
-    font-size: 8px !important;
-  }
-
-  .print-sheet[data-size="80mm"] .receipt-head,
-  .print-sheet[data-size="58mm"] .receipt-head {
-    display: block;
-    text-align: center;
-    padding-bottom: 9px;
-  }
-  .print-sheet[data-size="80mm"] .receipt-brand,
-  .print-sheet[data-size="58mm"] .receipt-brand {
-    display: grid;
-    justify-items: center;
-    gap: 5px;
-  }
-  .print-sheet[data-size="80mm"] .receipt-logo,
-  .print-sheet[data-size="58mm"] .receipt-logo { width: 44px; height: 34px; }
-  .print-sheet[data-size="80mm"] .receipt-workshop,
-  .print-sheet[data-size="58mm"] .receipt-workshop { font-size: 13px; }
-  .print-sheet[data-size="80mm"] .receipt-meta,
-  .print-sheet[data-size="58mm"] .receipt-meta {
-    text-align: center;
-    margin-top: 8px;
-  }
-  .print-sheet[data-size="80mm"] .receipt-meta strong,
-  .print-sheet[data-size="58mm"] .receipt-meta strong { font-size: 13px; }
-  .print-sheet[data-size="80mm"] .receipt-parties,
-  .print-sheet[data-size="58mm"] .receipt-parties { gap: 6px; padding: 9px 0; }
-  .print-sheet[data-size="80mm"] .receipt-parties section,
-  .print-sheet[data-size="58mm"] .receipt-parties section { font-size: 8px; }
-  .print-sheet[data-size="80mm"] .invoice-table,
-  .print-sheet[data-size="58mm"] .invoice-table {
-    width: 100% !important;
-    min-width: 0 !important;
-    font-size: 7px !important;
-    table-layout: fixed !important;
-  }
-  .print-sheet[data-size="80mm"] .invoice-table th,
-  .print-sheet[data-size="58mm"] .invoice-table th {
-    font-size: 7px !important;
-    padding: 4px 2px !important;
-  }
-  .print-sheet[data-size="80mm"] .invoice-table td,
-  .print-sheet[data-size="58mm"] .invoice-table td {
-    padding: 4px 2px !important;
-    white-space: normal !important;
-    overflow-wrap: anywhere !important;
-  }
-  .print-sheet[data-size="80mm"] .receipt-bottom,
-  .print-sheet[data-size="58mm"] .receipt-bottom {
-    display: block !important;
-    margin-top: 9px !important;
-  }
-  .print-sheet[data-size="80mm"] .receipt-totals,
-  .print-sheet[data-size="58mm"] .receipt-totals { font-size: 8px !important; }
-  .print-sheet[data-size="80mm"] .receipt-totals .grand-total,
-  .print-sheet[data-size="58mm"] .receipt-totals .grand-total { font-size: 11px !important; }
-  .print-sheet[data-size="80mm"] .receipt-footer,
-  .print-sheet[data-size="58mm"] .receipt-footer {
-    display: block !important;
-    text-align: center !important;
-    margin-top: 16px !important;
-    font-size: 8px !important;
-  }
-  .print-sheet[data-size="80mm"] .receipt-footer p,
-  .print-sheet[data-size="58mm"] .receipt-footer p { max-width: none !important; }
-  .print-sheet[data-size="80mm"] .receipt-footer > div,
-  .print-sheet[data-size="58mm"] .receipt-footer > div { margin: 10px auto 0 !important; }
-  .print-sheet[data-size="80mm"] .receipt-footer i,
-  .print-sheet[data-size="58mm"] .receipt-footer i { height: 25px !important; }
-
-  .print-sheet .invoice-table th {
-    background: #eee !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
+  html, body { background:#fff !important; margin:0 !important; padding:0 !important; width:auto !important; min-height:0 !important; }
+  body { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  .shell { display:block !important; min-height:0 !important; background:#fff !important; }
+  .topbar, .no-print, .page > :not(.print-root) { display:none !important; }
+  .page { display:block !important; width:auto !important; max-width:none !important; margin:0 !important; padding:0 !important; }
+  .print-root { display:block !important; width:auto !important; max-width:none !important; margin:0 !important; padding:0 !important; overflow:visible !important; }
+  .print-sheet { display:flex !important; flex-direction:column !important; box-sizing:border-box !important; background:#fff !important; color:#111 !important; box-shadow:none !important; border:0 !important; border-radius:0 !important; margin:0 !important; max-width:none !important; overflow:visible !important; break-inside:auto !important; page-break-inside:auto !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  .print-sheet[data-size="A4"] { page:A4Page; width:210mm !important; min-height:297mm !important; padding:16mm 15mm 14mm !important; }
+  .print-sheet[data-size="A5"] { page:A5Page; width:148mm !important; min-height:210mm !important; padding:10mm 9mm 9mm !important; }
+  .print-sheet[data-size="A4"] .receipt-workshop { font-size:28px !important; }
+  .print-sheet[data-size="A4"] .receipt-meta strong { font-size:20px !important; }
+  .print-sheet[data-size="A4"] .receipt-parties { padding:25px 0 !important; }
+  .print-sheet[data-size="A4"] .receipt-parties section { font-size:13px !important; }
+  .print-sheet[data-size="A4"] .invoice-table { font-size:12px !important; }
+  .print-sheet[data-size="A4"] .invoice-table th { font-size:11px !important; padding:13px 9px !important; }
+  .print-sheet[data-size="A4"] .invoice-table td { padding:13px 9px !important; }
+  .print-sheet[data-size="A4"] .receipt-bottom { margin-top:30px !important; }
+  .print-sheet[data-size="A4"] .receipt-totals { font-size:13px !important; }
+  .print-sheet[data-size="A4"] .receipt-footer { margin-top:auto !important; padding-top:34mm !important; font-size:12px !important; }
+  .print-sheet[data-size="A4"] .receipt-bottomline { margin-top:20mm !important; }
+  .print-sheet[data-size="A5"] .receipt-workshop { font-size:20px !important; }
+  .print-sheet[data-size="A5"] .receipt-parties { padding:16px 0 !important; }
+  .print-sheet[data-size="A5"] .receipt-parties section { font-size:10px !important; }
+  .print-sheet[data-size="A5"] .invoice-table { font-size:9px !important; }
+  .print-sheet[data-size="A5"] .invoice-table th { font-size:8px !important; padding:8px 5px !important; }
+  .print-sheet[data-size="A5"] .invoice-table td { padding:8px 5px !important; }
+  .print-sheet[data-size="A5"] .receipt-footer { margin-top:auto !important; padding-top:14mm !important; }
+  .print-sheet[data-size="80mm"] { page:Receipt80Page; width:80mm !important; min-height:0 !important; padding:4mm !important; font-size:9px !important; }
+  .print-sheet[data-size="58mm"] { page:Receipt58Page; width:58mm !important; min-height:0 !important; padding:3mm !important; font-size:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-head, .print-sheet[data-size="58mm"] .receipt-head { display:block !important; text-align:center !important; padding-bottom:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-brand, .print-sheet[data-size="58mm"] .receipt-brand { display:grid !important; justify-items:center !important; gap:4px !important; }
+  .print-sheet[data-size="80mm"] .receipt-logo, .print-sheet[data-size="58mm"] .receipt-logo { width:40px !important; height:30px !important; }
+  .print-sheet[data-size="80mm"] .receipt-workshop, .print-sheet[data-size="58mm"] .receipt-workshop { font-size:12px !important; }
+  .print-sheet[data-size="80mm"] .receipt-meta, .print-sheet[data-size="58mm"] .receipt-meta { text-align:center !important; justify-items:center !important; margin-top:7px !important; font-size:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-meta strong, .print-sheet[data-size="58mm"] .receipt-meta strong { font-size:11px !important; }
+  .print-sheet[data-size="80mm"] .payment-stamp, .print-sheet[data-size="58mm"] .payment-stamp { justify-self:center !important; font-size:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-parties, .print-sheet[data-size="58mm"] .receipt-parties { grid-template-columns:1fr 1fr !important; gap:5px !important; padding:8px 0 !important; }
+  .print-sheet[data-size="80mm"] .receipt-parties section, .print-sheet[data-size="58mm"] .receipt-parties section { font-size:7px !important; }
+  .print-sheet[data-size="80mm"] .receipt-table-wrap, .print-sheet[data-size="58mm"] .receipt-table-wrap { width:100% !important; }
+  .print-sheet[data-size="80mm"] .invoice-table, .print-sheet[data-size="58mm"] .invoice-table { width:100% !important; min-width:0 !important; table-layout:fixed !important; font-size:7px !important; }
+  .print-sheet[data-size="80mm"] .invoice-table th, .print-sheet[data-size="58mm"] .invoice-table th { font-size:6px !important; padding:4px 1px !important; }
+  .print-sheet[data-size="80mm"] .invoice-table td, .print-sheet[data-size="58mm"] .invoice-table td { padding:4px 1px !important; white-space:normal !important; overflow-wrap:anywhere !important; }
+  .print-sheet[data-size="80mm"] .receipt-bottom, .print-sheet[data-size="58mm"] .receipt-bottom { display:block !important; margin-top:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-totals, .print-sheet[data-size="58mm"] .receipt-totals { font-size:8px !important; }
+  .print-sheet[data-size="80mm"] .receipt-totals .grand-total, .print-sheet[data-size="58mm"] .receipt-totals .grand-total { font-size:11px !important; }
+  .print-sheet[data-size="80mm"] .receipt-footer, .print-sheet[data-size="58mm"] .receipt-footer { display:block !important; text-align:center !important; margin-top:12px !important; font-size:7px !important; }
+  .print-sheet[data-size="80mm"] .receipt-footer p, .print-sheet[data-size="58mm"] .receipt-footer p { max-width:none !important; }
+  .print-sheet[data-size="80mm"] .receipt-footer > div, .print-sheet[data-size="58mm"] .receipt-footer > div { margin:8px auto 0 !important; }
+  .print-sheet[data-size="80mm"] .receipt-footer i, .print-sheet[data-size="58mm"] .receipt-footer i { height:20px !important; }
+  .print-sheet .invoice-table th { background:#eee !important; }
 }

@@ -18,5 +18,10 @@ export const DEFAULT_SETTINGS:AppSettings = {
  footer_text:"Terima kasih atas kepercayaan Anda.\nSemoga perjalanan Anda selalu aman.",
  signature_label:"Hormat kami,", invoice_prefix:"BH", show_vehicle:true, show_buyer_address:true
 };
+export type PaymentStatus = "LUNAS" | "BELUM LUNAS";
+export function paymentStatus(invoice: Pick<Invoice, "items" | "discount" | "paid">): PaymentStatus {
+ const total = Math.max(0, totalOf(invoice.items || []) - Number(invoice.discount || 0));
+ return total > 0 && Number(invoice.paid || 0) >= total ? "LUNAS" : "BELUM LUNAS";
+}
 export const money = (n:number) => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
 export const totalOf = (items:InvoiceItem[]) => items.reduce((s,x)=>s+(Math.max(0,Number(x.qty)||0))*(Math.max(0,Number(x.price)||0)),0);
