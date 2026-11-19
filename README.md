@@ -36,3 +36,8 @@ Untuk pemakaian awal satu HP, ini sesuai. Sebaiknya ekspor/cadangkan data secara
 - Tetap menggunakan localStorage browser, tanpa Supabase.
 
 Catatan: localStorage terikat pada browser/perangkat. Gunakan Ekspor Cadangan secara berkala. Saat memulihkan cadangan, daftar nota lokal saat ini akan diganti oleh data di file cadangan.
+
+
+## NotPad 2.0.3 — Print layout fix
+- Print mode now removes the app header and non-print controls from document flow, preventing blank leading pages.
+- The invoice sheet is isolated before printing and uses dedicated A4/A5/80mm/58mm page rules.
