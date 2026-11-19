@@ -16,10 +16,6 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
 .empty{padding:70px 20px;text-align:center}.empty-icon{width:72px;height:72px;background:var(--yellow);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);display:grid;place-items:center;margin:0 auto 20px}
 .badge{font:11px 'DM Mono',monospace;padding:5px 8px;border:1px solid var(--ink);background:#fff}
 @media(max-width:700px){.page{padding:28px 16px 60px}.grid-2,.grid-3{grid-template-columns:1fr}.topbar{padding:0 16px}.hide-mobile{display:none}}
-@media print{
- @page{margin:0;size:A4} body{background:white!important}.no-print{display:none!important}.print-root{display:block!important}.print-sheet{box-shadow:none!important;border:0!important;margin:0!important;width:100%!important;min-height:0!important;padding:12mm!important}.print-sheet[data-size="A5"]{width:148mm!important;min-height:210mm!important}.print-sheet[data-size="80mm"]{width:80mm!important;padding:4mm!important}.print-sheet[data-size="58mm"]{width:58mm!important;padding:3mm!important}.print-sheet[data-size="80mm"],.print-sheet[data-size="58mm"]{font-size:10px}.print-sheet[data-size="80mm"] table,.print-sheet[data-size="58mm"] table{min-width:0!important;font-size:9px}.print-sheet[data-size="80mm"] th,.print-sheet[data-size="58mm"] th{padding:5px 3px}.print-sheet[data-size="80mm"] td,.print-sheet[data-size="58mm"] td{padding:5px 3px}.print-sheet .invoice-table{border:1px solid #111}.print-sheet .invoice-table th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
-
 /* NotPad 2.0 — responsive workshop workspace */
 .top-actions{display:flex;align-items:center;gap:10px}.settings-link{background:#fff}
 .highlight{background:var(--yellow);padding:0 8px}.intro{max-width:620px;line-height:1.7}
@@ -59,16 +55,20 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
  .receipt-parties{gap:12px;padding:14px 0}.receipt-parties section{font-size:10px}.invoice-table{font-size:9px}.invoice-table th{font-size:8px;padding:7px 4px}.invoice-table td{padding:7px 4px}.receipt-bottom{grid-template-columns:1fr;gap:12px}.receipt-totals{max-width:100%}.receipt-footer{margin-top:28px;font-size:9px}.receipt-footer>div{min-width:110px}
 }
 @media(max-width:390px){.receipt-logo{width:48px;height:42px}.receipt-workshop{font-size:16px}.receipt-meta strong{font-size:13px}.invoice-paper{padding:16px 10px}.receipt-parties{grid-template-columns:1fr 1fr}.invoice-table th,.invoice-table td{padding:6px 2px;font-size:8px}}
+@page A4Page { size: A4; margin: 0; }
+@page A5Page { size: A5; margin: 0; }
+@page Receipt80Page { size: 80mm 250mm; margin: 0; }
+@page Receipt58Page { size: 58mm 250mm; margin: 0; }
 @media print{
- @page{margin:0;size:A4}
- html,body{background:#fff!important;margin:0!important;padding:0!important}
+ html,body{background:#fff!important;margin:0!important;padding:0!important;width:auto!important;min-height:0!important}
  body *{visibility:hidden!important}
  .print-root,.print-root *{visibility:visible!important}
- .print-root{position:absolute;left:0;top:0;width:100%}
- .print-sheet{display:block!important;box-shadow:none!important;border:0!important;border-radius:0!important;margin:0!important;max-width:none!important;width:100%!important;padding:12mm!important;overflow:visible!important;break-inside:avoid}
- .print-sheet[data-size="A5"]{width:148mm!important;min-height:210mm!important;padding:9mm!important}
- .print-sheet[data-size="80mm"]{width:80mm!important;padding:4mm!important;font-size:9px!important}
- .print-sheet[data-size="58mm"]{width:58mm!important;padding:3mm!important;font-size:8px!important}
+ .print-root{display:block!important;position:static!important;left:auto!important;top:auto!important;width:auto!important;margin:0!important;padding:0!important}
+ .print-sheet{display:block!important;box-sizing:border-box!important;box-shadow:none!important;border:0!important;border-radius:0!important;margin:0!important;max-width:none!important;min-height:0!important;overflow:visible!important;break-inside:avoid!important}
+ .print-sheet[data-size="A4"]{page:A4Page;width:210mm!important;min-height:297mm!important;padding:12mm!important}
+ .print-sheet[data-size="A5"]{page:A5Page;width:148mm!important;min-height:210mm!important;padding:9mm!important}
+ .print-sheet[data-size="80mm"]{page:Receipt80Page;width:80mm!important;padding:4mm!important;font-size:9px!important}
+ .print-sheet[data-size="58mm"]{page:Receipt58Page;width:58mm!important;padding:3mm!important;font-size:8px!important}
  .print-sheet[data-size="80mm"] .receipt-head,.print-sheet[data-size="58mm"] .receipt-head{display:block;text-align:center;padding-bottom:9px}
  .print-sheet[data-size="80mm"] .receipt-brand,.print-sheet[data-size="58mm"] .receipt-brand{display:grid;justify-items:center;gap:5px}
  .print-sheet[data-size="80mm"] .receipt-logo,.print-sheet[data-size="58mm"] .receipt-logo{width:44px;height:34px}
@@ -77,7 +77,7 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
  .print-sheet[data-size="80mm"] .receipt-meta strong,.print-sheet[data-size="58mm"] .receipt-meta strong{font-size:13px}
  .print-sheet[data-size="80mm"] .receipt-parties,.print-sheet[data-size="58mm"] .receipt-parties{gap:6px;padding:9px 0}
  .print-sheet[data-size="80mm"] .receipt-parties section,.print-sheet[data-size="58mm"] .receipt-parties section{font-size:8px}
- .print-sheet[data-size="80mm"] .invoice-table,.print-sheet[data-size="58mm"] .invoice-table{font-size:7px;table-layout:fixed}
+ .print-sheet[data-size="80mm"] .invoice-table,.print-sheet[data-size="58mm"] .invoice-table{width:100%!important;min-width:0!important;font-size:7px;table-layout:fixed}
  .print-sheet[data-size="80mm"] .invoice-table th,.print-sheet[data-size="58mm"] .invoice-table th{font-size:7px;padding:4px 2px}
  .print-sheet[data-size="80mm"] .invoice-table td,.print-sheet[data-size="58mm"] .invoice-table td{padding:4px 2px;white-space:normal;overflow-wrap:anywhere}
  .print-sheet[data-size="80mm"] .receipt-bottom,.print-sheet[data-size="58mm"] .receipt-bottom{display:block;margin-top:9px}
@@ -87,4 +87,5 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;letter-spacing:-3px;margin:12p
  .print-sheet[data-size="80mm"] .receipt-footer p,.print-sheet[data-size="58mm"] .receipt-footer p{max-width:none}
  .print-sheet[data-size="80mm"] .receipt-footer>div,.print-sheet[data-size="58mm"] .receipt-footer>div{margin:10px auto 0}
  .print-sheet[data-size="80mm"] .receipt-footer i,.print-sheet[data-size="58mm"] .receipt-footer i{height:25px}
+ .print-sheet .invoice-table th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
